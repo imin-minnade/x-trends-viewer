@@ -1,0 +1,41 @@
+# TODO: Claude Code で検証・調整すること
+# - fetch_trends.py の実装完了後に結合テスト
+# - cron の時刻は UTC 22:00 = JST 07:00
+
+name: Fetch X Trends
+
+on:
+  schedule:
+    - cron: '0 22 * * *'  # UTC 22:00 = JST 07:00
+  workflow_dispatch: {}     # 手動実行
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # git push に必要
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch trends
+        run: python scripts/fetch_trends.py
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ site/data/
+          git diff --staged --quiet || git commit -m "trends: $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Trends — Japan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>X Trends — Japan</h1>
+    <p id="fetched-at"></p>
+    <input type="date" id="date-picker">
+  </header>
+
+  <main>
+    <div id="trends-list">
+      <!-- TODO: app.js がここにトレンドを描画する -->
+      <p class="loading">読み込み中...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Data from X API · <a href="https://developer.x.com/">developer.x.com</a></p>
+    <p>トレンドの詳細は Google 検索で確認（X へのリンクは意図的に張っていません）</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+<!--
+  TODO: Claude Code で以下を実装・改善
+  - デザインの作り込み（CLAUDE.md のデザイン方針を参照）
+  - レスポンシブレイアウト
+  - ダークモード対応
+  - date-picker の連動
+  - エラー表示（JSON 読み込み失敗時）
+-->

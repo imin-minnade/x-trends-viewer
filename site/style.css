@@ -1,0 +1,45 @@
+/*
+  TODO: Claude Code でデザインを作り込む
+  CLAUDE.md のデザイン方針:
+    - Noto Sans JP
+    - 情報密度を高く、無駄な装飾なし
+    - 朝5分で確認できる一覧性を最優先
+    - ダークモードでは目に優しい配色
+*/
+
+:root {
+  --font-main: 'Noto Sans JP', sans-serif;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #666666;
+  --accent: #1d9bf0;
+  --bar-bg: #e8e8e8;
+  --bar-fill: #1d9bf0;
+  --border: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15202b;
+    --text: #e7e9ea;
+    --text-secondary: #8b98a5;
+    --accent: #1d9bf0;
+    --bar-bg: #2f3336;
+    --bar-fill: #1d9bf0;
+    --border: #2f3336;
+  }
+}
+
+/* TODO: 以下を実装 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+}

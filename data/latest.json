@@ -1,0 +1,22 @@
+{
+  "fetched_at": "2026-04-01T07:00:00+09:00",
+  "location": "Japan",
+  "woeid": 23424856,
+  "trends": [
+    { "rank": 1, "name": "#桜開花", "tweet_count": 128500, "google_search_url": "https://www.google.com/search?q=%23桜開花" },
+    { "rank": 2, "name": "新年度", "tweet_count": 95200, "google_search_url": "https://www.google.com/search?q=新年度" },
+    { "rank": 3, "name": "#エイプリルフール", "tweet_count": 87300, "google_search_url": "https://www.google.com/search?q=%23エイプリルフール" },
+    { "rank": 4, "name": "入社式", "tweet_count": 62100, "google_search_url": "https://www.google.com/search?q=入社式" },
+    { "rank": 5, "name": "#新生活", "tweet_count": 45800, "google_search_url": "https://www.google.com/search?q=%23新生活" },
+    { "rank": 6, "name": "花見", "tweet_count": 38400, "google_search_url": "https://www.google.com/search?q=花見" },
+    { "rank": 7, "name": "#朝ドラ", "tweet_count": 31200, "google_search_url": "https://www.google.com/search?q=%23朝ドラ" },
+    { "rank": 8, "name": "地震速報", "tweet_count": 28900, "google_search_url": "https://www.google.com/search?q=地震速報" },
+    { "rank": 9, "name": "#プロ野球開幕", "tweet_count": 22600, "google_search_url": "https://www.google.com/search?q=%23プロ野球開幕" },
+    { "rank": 10, "name": "ChatGPT", "tweet_count": 18700, "google_search_url": "https://www.google.com/search?q=ChatGPT" },
+    { "rank": 11, "name": "#確定申告", "tweet_count": 15300, "google_search_url": "https://www.google.com/search?q=%23確定申告" },
+    { "rank": 12, "name": "為替", "tweet_count": null, "google_search_url": "https://www.google.com/search?q=為替" },
+    { "rank": 13, "name": "#Wordle", "tweet_count": 9800, "google_search_url": "https://www.google.com/search?q=%23Wordle" },
+    { "rank": 14, "name": "花粉症", "tweet_count": 8200, "google_search_url": "https://www.google.com/search?q=花粉症" },
+    { "rank": 15, "name": "#おはようございます", "tweet_count": null, "google_search_url": "https://www.google.com/search?q=%23おはようございます" }
+  ]
+}
