@@ -27,7 +27,7 @@ JAPAN_WOEID = 23424856
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 TRENDS_DIR = DATA_DIR / "trends"
-SITE_DATA_DIR = PROJECT_ROOT / "site" / "data"
+SITE_DATA_DIR = PROJECT_ROOT / "docs" / "data"
 SITE_TRENDS_DIR = SITE_DATA_DIR / "trends"
 
 JST = timezone(timedelta(hours=9))

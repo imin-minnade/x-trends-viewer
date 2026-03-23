@@ -24,13 +24,13 @@ GitHub Actions (cron: 毎朝 7:00 JST = UTC 22:00)
   2. JSON ファイルを生成
      └─ data/latest.json        （最新。毎日上書き）
      └─ data/trends/YYYY-MM-DD.json （日付別アーカイブ）
-  3. site/data/ にコピー（GitHub Pages 公開用）
+  3. docs/data/ にコピー（GitHub Pages 公開用）
   4. Git commit & push
   → GitHub Pages が自動再デプロイ
 
 GitHub Pages (静的サイト)
-  └─ site/ ディレクトリを公開
-  └─ JS が site/data/*.json を fetch して表示
+  └─ docs/ ディレクトリを公開
+  └─ JS が docs/data/*.json を fetch して表示
 ```
 
 60日後の振り返り時に data/ の JSON を一括でスプレッドシートに流し込んで分析する。
@@ -53,7 +53,7 @@ x-trends-viewer/
 │   ├── latest.json               ← 最新トレンド（毎日上書き）
 │   └── trends/
 │       └── YYYY-MM-DD.json       ← 日付別アーカイブ
-└── site/                         ← GitHub Pages 公開ディレクトリ
+└── docs/                         ← GitHub Pages 公開ディレクトリ
     ├── index.html                ← メインページ
     ├── style.css                 ← スタイル
     ├── app.js                    ← トレンド表示ロジック
@@ -80,7 +80,7 @@ x-trends-viewer/
 3. レスポンスを統一フォーマットに整形
 4. `data/latest.json` を上書き保存
 5. `data/trends/YYYY-MM-DD.json` を作成（JST 日付）
-6. `site/data/` にコピー（GitHub Pages 公開用）
+6. `docs/data/` にコピー（GitHub Pages 公開用）
 
 **出力 JSON フォーマット**:
 ```json
@@ -140,12 +140,12 @@ requests>=2.31.0
 
 **重要**: `git diff --staged --quiet || git commit` で変更がない場合はコミットをスキップ。
 
-### site/index.html
+### docs/index.html
 
 **機能要件**:
-- 今日のトレンド一覧を表示（site/data/latest.json を fetch）
+- 今日のトレンド一覧を表示（docs/data/latest.json を fetch）
 - 各トレンドの投稿数を横棒バーで視覚化（相対比較）
-- 過去の日付を選択して履歴閲覧（date picker → site/data/trends/YYYY-MM-DD.json）
+- 過去の日付を選択して履歴閲覧（date picker → docs/data/trends/YYYY-MM-DD.json）
 - レスポンシブデザイン（スマホで朝見る用途）
 - ダークモード対応（prefers-color-scheme）
 - 取得日時の表示
@@ -183,12 +183,12 @@ requests>=2.31.0
 4. 手動実行 (workflow_dispatch) でテスト
 
 ### Phase 2: フロントエンド（データを表示する）
-1. `site/index.html`, `site/style.css`, `site/app.js` を実装
-2. テスト用のダミー JSON を site/data/ に配置して開発
+1. `docs/index.html`, `docs/style.css`, `docs/app.js` を実装
+2. テスト用のダミー JSON を docs/data/ に配置して開発
 3. レスポンシブ確認
 
 ### Phase 3: 結合テスト
-1. GitHub Actions 手動実行 → site/data/ に JSON が配置されるか
+1. GitHub Actions 手動実行 → docs/data/ に JSON が配置されるか
 2. GitHub Pages でサイトが正しく表示されるか
 3. スマホからアクセスして確認
 
@@ -199,7 +199,7 @@ requests>=2.31.0
 
 - Settings > Pages > Source: 「Deploy from a branch」
 - Branch: main, Folder: /site
-- これで site/ ディレクトリが公開される
+- これで docs/ ディレクトリが公開される
 
 ## セキュリティ
 
@@ -218,7 +218,7 @@ requests>=2.31.0
 
 ## テスト用ダミーデータ
 
-開発中は以下のようなダミー JSON を `site/data/latest.json` に置いて使う:
+開発中は以下のようなダミー JSON を `docs/data/latest.json` に置いて使う:
 
 ```json
 {
