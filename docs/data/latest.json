@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-03-23T10:43:59.595083+09:00",
+  "fetched_at": "2026-03-23T10:57:45.418811+09:00",
   "location": "Japan",
   "woeid": 23424856,
   "trends": [
@@ -23,27 +23,27 @@
     },
     {
       "rank": 4,
-      "name": "#風間くんありがとう",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%23%E9%A2%A8%E9%96%93%E3%81%8F%E3%82%93%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86"
-    },
-    {
-      "rank": 5,
       "name": "食パンダッシュ",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E9%A3%9F%E3%83%91%E3%83%B3%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5"
     },
     {
-      "rank": 6,
-      "name": "#LINEマンガでポイ活",
+      "rank": 5,
+      "name": "#風間くんありがとう",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%23LINE%E3%83%9E%E3%83%B3%E3%82%AC%E3%81%A7%E3%83%9D%E3%82%A4%E6%B4%BB"
+      "google_search_url": "https://www.google.com/search?q=%23%E9%A2%A8%E9%96%93%E3%81%8F%E3%82%93%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86"
+    },
+    {
+      "rank": 6,
+      "name": "#プレミアムガーナ",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%23%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AC%E3%83%BC%E3%83%8A"
     },
     {
       "rank": 7,
-      "name": "#モーニングショー",
+      "name": "#LINEマンガでポイ活",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%23%E3%83%A2%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%B7%E3%83%A7%E3%83%BC"
+      "google_search_url": "https://www.google.com/search?q=%23LINE%E3%83%9E%E3%83%B3%E3%82%AC%E3%81%A7%E3%83%9D%E3%82%A4%E6%B4%BB"
     },
     {
       "rank": 8,
@@ -71,15 +71,15 @@
     },
     {
       "rank": 12,
-      "name": "そらジロー",
+      "name": "ONC優勝",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%81%9D%E3%82%89%E3%82%B8%E3%83%AD%E3%83%BC"
+      "google_search_url": "https://www.google.com/search?q=ONC%E5%84%AA%E5%8B%9D"
     },
     {
       "rank": 13,
-      "name": "世界気象デー",
+      "name": "そらジロー",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E4%B8%96%E7%95%8C%E6%B0%97%E8%B1%A1%E3%83%87%E3%83%BC"
+      "google_search_url": "https://www.google.com/search?q=%E3%81%9D%E3%82%89%E3%82%B8%E3%83%AD%E3%83%BC"
     },
     {
       "rank": 14,
@@ -89,63 +89,63 @@
     },
     {
       "rank": 15,
+      "name": "世界気象デー",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E4%B8%96%E7%95%8C%E6%B0%97%E8%B1%A1%E3%83%87%E3%83%BC"
+    },
+    {
+      "rank": 16,
       "name": "ホットサンド",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%83%9B%E3%83%83%E3%83%88%E3%82%B5%E3%83%B3%E3%83%89"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "name": "間隙の座標",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E9%96%93%E9%9A%99%E3%81%AE%E5%BA%A7%E6%A8%99"
     },
     {
-      "rank": 17,
-      "name": "のんちゃん舞台",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%81%AE%E3%82%93%E3%81%A1%E3%82%83%E3%82%93%E8%88%9E%E5%8F%B0"
-    },
-    {
       "rank": 18,
-      "name": "週の始まり",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E9%80%B1%E3%81%AE%E5%A7%8B%E3%81%BE%E3%82%8A"
-    },
-    {
-      "rank": 19,
-      "name": "まことお兄さん",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%81%BE%E3%81%93%E3%81%A8%E3%81%8A%E5%85%84%E3%81%95%E3%82%93"
-    },
-    {
-      "rank": 20,
       "name": "ホルムズ海峡の安全",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%83%9B%E3%83%AB%E3%83%A0%E3%82%BA%E6%B5%B7%E5%B3%A1%E3%81%AE%E5%AE%89%E5%85%A8"
     },
     {
-      "rank": 21,
-      "name": "イラン情勢の長期化懸念",
+      "rank": 19,
+      "name": "のんちゃん舞台",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%82%A4%E3%83%A9%E3%83%B3%E6%83%85%E5%8B%A2%E3%81%AE%E9%95%B7%E6%9C%9F%E5%8C%96%E6%87%B8%E5%BF%B5"
+      "google_search_url": "https://www.google.com/search?q=%E3%81%AE%E3%82%93%E3%81%A1%E3%82%83%E3%82%93%E8%88%9E%E5%8F%B0"
+    },
+    {
+      "rank": 20,
+      "name": "まことお兄さん",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E3%81%BE%E3%81%93%E3%81%A8%E3%81%8A%E5%85%84%E3%81%95%E3%82%93"
+    },
+    {
+      "rank": 21,
+      "name": "週の始まり",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E9%80%B1%E3%81%AE%E5%A7%8B%E3%81%BE%E3%82%8A"
     },
     {
       "rank": 22,
-      "name": "NY市場の大幅下落",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=NY%E5%B8%82%E5%A0%B4%E3%81%AE%E5%A4%A7%E5%B9%85%E4%B8%8B%E8%90%BD"
-    },
-    {
-      "rank": 23,
       "name": "げつようび",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%81%92%E3%81%A4%E3%82%88%E3%81%86%E3%81%B3"
     },
     {
-      "rank": 24,
-      "name": "風間さん",
+      "rank": 23,
+      "name": "イラン情勢の長期化懸念",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E9%A2%A8%E9%96%93%E3%81%95%E3%82%93"
+      "google_search_url": "https://www.google.com/search?q=%E3%82%A4%E3%83%A9%E3%83%B3%E6%83%85%E5%8B%A2%E3%81%AE%E9%95%B7%E6%9C%9F%E5%8C%96%E6%87%B8%E5%BF%B5"
+    },
+    {
+      "rank": 24,
+      "name": "NY市場の大幅下落",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=NY%E5%B8%82%E5%A0%B4%E3%81%AE%E5%A4%A7%E5%B9%85%E4%B8%8B%E8%90%BD"
     },
     {
       "rank": 25,
@@ -155,153 +155,153 @@
     },
     {
       "rank": 26,
-      "name": "リプトン",
+      "name": "風間さん",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%83%AA%E3%83%97%E3%83%88%E3%83%B3"
+      "google_search_url": "https://www.google.com/search?q=%E9%A2%A8%E9%96%93%E3%81%95%E3%82%93"
     },
     {
       "rank": 27,
-      "name": "風間ぽん",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E9%A2%A8%E9%96%93%E3%81%BD%E3%82%93"
-    },
-    {
-      "rank": 28,
       "name": "クルド人",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%82%AF%E3%83%AB%E3%83%89%E4%BA%BA"
     },
     {
-      "rank": 29,
-      "name": "高市首相答弁後",
+      "rank": 28,
+      "name": "リプトン",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E9%AB%98%E5%B8%82%E9%A6%96%E7%9B%B8%E7%AD%94%E5%BC%81%E5%BE%8C"
+      "google_search_url": "https://www.google.com/search?q=%E3%83%AA%E3%83%97%E3%83%88%E3%83%B3"
     },
     {
-      "rank": 30,
+      "rank": 29,
       "name": "テレビマン",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%83%86%E3%83%AC%E3%83%93%E3%83%9E%E3%83%B3"
     },
     {
-      "rank": 31,
-      "name": "ホームスチール",
+      "rank": 30,
+      "name": "風間ぽん",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%B9%E3%83%81%E3%83%BC%E3%83%AB"
+      "google_search_url": "https://www.google.com/search?q=%E9%A2%A8%E9%96%93%E3%81%BD%E3%82%93"
     },
     {
-      "rank": 32,
+      "rank": 31,
       "name": "対日批判の投稿急増",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E5%AF%BE%E6%97%A5%E6%89%B9%E5%88%A4%E3%81%AE%E6%8A%95%E7%A8%BF%E6%80%A5%E5%A2%97"
     },
     {
+      "rank": 32,
+      "name": "ホームスチール",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%B9%E3%83%81%E3%83%BC%E3%83%AB"
+    },
+    {
       "rank": 33,
-      "name": "スジャータ",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%82%B9%E3%82%B8%E3%83%A3%E3%83%BC%E3%82%BF"
-    },
-    {
-      "rank": 34,
-      "name": "雨の月曜日",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E9%9B%A8%E3%81%AE%E6%9C%88%E6%9B%9C%E6%97%A5"
-    },
-    {
-      "rank": 35,
-      "name": "共同分析",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E5%85%B1%E5%90%8C%E5%88%86%E6%9E%90"
-    },
-    {
-      "rank": 36,
       "name": "ムチュー",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E3%83%A0%E3%83%81%E3%83%A5%E3%83%BC"
     },
     {
-      "rank": 37,
+      "rank": 34,
       "name": "読売・サカナAI",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E8%AA%AD%E5%A3%B2%E3%83%BB%E3%82%B5%E3%82%AB%E3%83%8AAI"
     },
     {
-      "rank": 38,
-      "name": "千ちゃん",
+      "rank": 35,
+      "name": "高市首相答弁後",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E5%8D%83%E3%81%A1%E3%82%83%E3%82%93"
+      "google_search_url": "https://www.google.com/search?q=%E9%AB%98%E5%B8%82%E9%A6%96%E7%9B%B8%E7%AD%94%E5%BC%81%E5%BE%8C"
     },
     {
-      "rank": 39,
+      "rank": 36,
       "name": "姉さんスペシャル",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E5%A7%89%E3%81%95%E3%82%93%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB"
     },
     {
-      "rank": 40,
+      "rank": 37,
       "name": "🇯🇵日経平均",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%F0%9F%87%AF%F0%9F%87%B5%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87"
     },
     {
-      "rank": 41,
-      "name": "デジリリ",
+      "rank": 38,
+      "name": "スジャータ",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%83%87%E3%82%B8%E3%83%AA%E3%83%AA"
+      "google_search_url": "https://www.google.com/search?q=%E3%82%B9%E3%82%B8%E3%83%A3%E3%83%BC%E3%82%BF"
     },
     {
-      "rank": 42,
-      "name": "発電所攻撃",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E7%99%BA%E9%9B%BB%E6%89%80%E6%94%BB%E6%92%83"
-    },
-    {
-      "rank": 43,
-      "name": "世界中の米国人",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E4%B8%96%E7%95%8C%E4%B8%AD%E3%81%AE%E7%B1%B3%E5%9B%BD%E4%BA%BA"
-    },
-    {
-      "rank": 44,
-      "name": "KUMAMONday",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=KUMAMONday"
-    },
-    {
-      "rank": 45,
-      "name": "イクイノックス",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%82%A4%E3%82%AF%E3%82%A4%E3%83%8E%E3%83%83%E3%82%AF%E3%82%B9"
-    },
-    {
-      "rank": 46,
-      "name": "ディープインパクト",
-      "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%82%A4%E3%83%B3%E3%83%91%E3%82%AF%E3%83%88"
-    },
-    {
-      "rank": 47,
+      "rank": 39,
       "name": "完全封鎖",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=%E5%AE%8C%E5%85%A8%E5%B0%81%E9%8E%96"
     },
     {
-      "rank": 48,
-      "name": "まことおにいさん",
+      "rank": 40,
+      "name": "日本の総理",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E3%81%BE%E3%81%93%E3%81%A8%E3%81%8A%E3%81%AB%E3%81%84%E3%81%95%E3%82%93"
+      "google_search_url": "https://www.google.com/search?q=%E6%97%A5%E6%9C%AC%E3%81%AE%E7%B7%8F%E7%90%86"
     },
     {
-      "rank": 49,
-      "name": "一龍斎貞友さん",
+      "rank": 41,
+      "name": "共同分析",
       "tweet_count": null,
-      "google_search_url": "https://www.google.com/search?q=%E4%B8%80%E9%BE%8D%E6%96%8E%E8%B2%9E%E5%8F%8B%E3%81%95%E3%82%93"
+      "google_search_url": "https://www.google.com/search?q=%E5%85%B1%E5%90%8C%E5%88%86%E6%9E%90"
     },
     {
-      "rank": 50,
+      "rank": 42,
+      "name": "デジリリ",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E3%83%87%E3%82%B8%E3%83%AA%E3%83%AA"
+    },
+    {
+      "rank": 43,
+      "name": "イクイノックス",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E3%82%A4%E3%82%AF%E3%82%A4%E3%83%8E%E3%83%83%E3%82%AF%E3%82%B9"
+    },
+    {
+      "rank": 44,
+      "name": "雨の月曜日",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E9%9B%A8%E3%81%AE%E6%9C%88%E6%9B%9C%E6%97%A5"
+    },
+    {
+      "rank": 45,
+      "name": "発電所攻撃",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E7%99%BA%E9%9B%BB%E6%89%80%E6%94%BB%E6%92%83"
+    },
+    {
+      "rank": 46,
+      "name": "KUMAMONday",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=KUMAMONday"
+    },
+    {
+      "rank": 47,
       "name": "ANN世論調査",
       "tweet_count": null,
       "google_search_url": "https://www.google.com/search?q=ANN%E4%B8%96%E8%AB%96%E8%AA%BF%E6%9F%BB"
+    },
+    {
+      "rank": 48,
+      "name": "世界中の米国人",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E4%B8%96%E7%95%8C%E4%B8%AD%E3%81%AE%E7%B1%B3%E5%9B%BD%E4%BA%BA"
+    },
+    {
+      "rank": 49,
+      "name": "ディープインパクト",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%82%A4%E3%83%B3%E3%83%91%E3%82%AF%E3%83%88"
+    },
+    {
+      "rank": 50,
+      "name": "千ちゃん",
+      "tweet_count": null,
+      "google_search_url": "https://www.google.com/search?q=%E5%8D%83%E3%81%A1%E3%82%83%E3%82%93"
     }
   ]
 }
