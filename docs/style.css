@@ -1,27 +1,45 @@
+/* ============================================================
+   X Trends Viewer — スタイルシート
+   X (Twitter) のデザイン言語を参考に構成
+   ============================================================ */
+
 :root {
-  --font-main: 'Noto Sans JP', sans-serif;
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #666666;
-  --accent: #1d9bf0;
-  --bar-bg: #e8e8e8;
-  --bar-fill: #1d9bf0;
-  --border: #e0e0e0;
+  --font-main: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ライトモード */
+  --bg:              #ffffff;
+  --bg-secondary:    #f7f9f9;
+  --text:            #0f1419;
+  --text-secondary:  #536471;
+  --accent:          #1d9bf0;
+  --accent-hover:    #1a8cd8;
+  --border:          #eff3f4;
+  --bar-bg:          #eff3f4;
+  --bar-fill:        #1d9bf0;
+  --hover-bg:        #f7f9f9;
+  --error-color:     #f4212e;
+  --rise-color:      #00ba7c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #15202b;
-    --text: #e7e9ea;
-    --text-secondary: #8b98a5;
-    --accent: #1d9bf0;
-    --bar-bg: #2f3336;
-    --bar-fill: #1d9bf0;
-    --border: #2f3336;
+    --bg:             #000000;
+    --bg-secondary:   #16181c;
+    --text:           #e7e9ea;
+    --text-secondary: #71767b;
+    --accent:         #1d9bf0;
+    --accent-hover:   #1a8cd8;
+    --border:         #2f3336;
+    --bar-bg:         #2f3336;
+    --bar-fill:       #1d9bf0;
+    --hover-bg:       #16181c;
+    --error-color:    #f4212e;
+    --rise-color:     #00ba7c;
   }
 }
 
-* {
+/* ---- リセット ---- */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,35 +51,44 @@ body {
   color: var(--text);
   font-size: 15px;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ヘッダー */
+/* ---- ヘッダー ---- */
 header {
-  border-bottom: 1px solid var(--border);
-  padding: 10px 16px 0;
   position: sticky;
   top: 0;
-  background: var(--bg);
-  z-index: 10;
+  background: rgba(var(--bg), 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* sticky のmax-width対応 */
+@supports (position: sticky) {
+  header {
+    position: sticky;
+    left: 0;
+    right: 0;
+  }
 }
 
 .header-top {
   display: flex;
   align-items: center;
+  padding: 12px 16px 0;
   gap: 12px;
-  margin-bottom: 8px;
 }
 
 header h1 {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
+  letter-spacing: -0.3px;
   flex: 1;
-}
-
-#fetched-at {
-  font-size: 12px;
-  color: var(--text-secondary);
-  padding: 4px 0 8px;
 }
 
 #date-picker {
@@ -70,103 +97,196 @@ header h1 {
   color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 8px;
+  border-radius: 9999px;
+  padding: 5px 10px;
   cursor: pointer;
   flex-shrink: 0;
+  transition: border-color 0.15s;
 }
 
 #date-picker:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* 日付ナビ */
+.date-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px 0;
+}
+
+.date-nav-btn {
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.date-nav-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+.date-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#current-date-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex: 1;
+  text-align: center;
 }
 
 /* タブナビ */
 #tab-nav {
   display: flex;
-  gap: 0;
   overflow-x: auto;
   scrollbar-width: none;
+  padding: 0 4px;
 }
 
-#tab-nav::-webkit-scrollbar {
-  display: none;
-}
+#tab-nav::-webkit-scrollbar { display: none; }
 
 .tab-btn {
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-secondary);
   background: none;
   border: none;
-  border-bottom: 3px solid transparent;
-  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  padding: 14px 18px 12px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s;
+  flex-shrink: 0;
 }
 
-.tab-btn:hover {
-  color: var(--text);
-  background: none;
-}
+.tab-btn:hover { color: var(--text); }
 
 .tab-btn.active {
-  color: var(--accent);
+  color: var(--text);
   border-bottom-color: var(--accent);
 }
 
-/* メインコンテンツ */
+#fetched-at {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 4px 16px 8px;
+}
+
+/* ---- メインコンテンツ ---- */
 main {
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
-/* トレンドアイテム */
-.trend-item {
+/* 表示件数セレクタ */
+.display-count-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--border);
-  padding: 10px 16px 8px;
 }
+
+.display-count-bar span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-right: 2px;
+}
+
+.count-btn {
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.count-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+.count-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* ---- トレンドアイテム ---- */
+.trend-item {
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  cursor: default;
+}
+
+.trend-item:hover { background: var(--hover-bg); }
 
 .trend-main {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
 .rank {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-secondary);
-  min-width: 24px;
+  min-width: 22px;
   flex-shrink: 0;
+  text-align: right;
 }
 
 .trend-name {
   flex: 1;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 700;
   word-break: break-all;
 }
 
-.tweet-count {
-  font-size: 12px;
-  color: var(--text-secondary);
+.trend-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
-  min-width: 36px;
-  text-align: right;
+}
+
+.tweet-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.rise-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rise-color);
 }
 
 .search-link {
   font-size: 12px;
   color: var(--accent);
   text-decoration: none;
-  flex-shrink: 0;
-  padding: 2px 6px;
   border: 1px solid var(--accent);
-  border-radius: 4px;
+  border-radius: 9999px;
+  padding: 2px 8px;
   white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
 }
 
 .search-link:hover {
@@ -174,42 +294,63 @@ main {
   color: #fff;
 }
 
-/* 投稿数バー */
 .bar-container {
-  margin-top: 6px;
-  height: 3px;
+  margin-top: 7px;
+  height: 2px;
   background: var(--bar-bg);
-  border-radius: 2px;
+  border-radius: 1px;
   overflow: hidden;
 }
 
 .bar-fill {
   height: 100%;
   background: var(--bar-fill);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-  min-width: 0;
+  border-radius: 1px;
+  transition: width 0.4s ease;
 }
 
-/* 投稿カード */
+/* ---- 投稿カード ---- */
 .post-item {
-  border-bottom: 1px solid var(--border);
   padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  cursor: default;
 }
+
+.post-item:hover { background: var(--hover-bg); }
 
 .post-text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
-  white-space: pre-wrap;
   word-break: break-all;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
+
+.post-text.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.expand-btn {
+  font-size: 13px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 6px;
+  font-family: var(--font-main);
+}
+
+.expand-btn:hover { text-decoration: underline; }
 
 .post-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
+  gap: 6px;
+  font-size: 13px;
   color: var(--text-secondary);
   flex-wrap: wrap;
 }
@@ -219,96 +360,58 @@ main {
   color: var(--text);
 }
 
-.post-username::before {
-  content: "@";
-}
+.post-username::before { content: "@"; }
+
+.post-date::before { content: "·"; margin-right: 4px; }
 
 .post-metrics {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-left: auto;
 }
 
-.post-metric {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
+.post-metric { display: flex; align-items: center; gap: 3px; }
 
-.post-actions {
-  margin-top: 6px;
-}
+.post-actions { margin-top: 8px; }
 
-/* ローディング・エラー */
-.loading,
-.error {
+/* ---- ローディング・エラー ---- */
+.loading, .error {
   text-align: center;
-  padding: 40px 16px;
+  padding: 48px 16px;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 15px;
 }
 
-.error {
-  color: #e0245e;
-}
+.error { color: var(--error-color); }
+.error small { font-size: 13px; opacity: 0.8; display: block; margin-top: 4px; }
 
-.error small {
-  font-size: 12px;
-  opacity: 0.8;
-}
-
-/* フッター */
+/* ---- フッター ---- */
 footer {
-  border-top: 1px solid var(--border);
-  padding: 16px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-secondary);
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
+  border-top: 1px solid var(--border);
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
-footer p + p {
-  margin-top: 4px;
-}
+footer p + p { margin-top: 4px; }
 
 footer a {
   color: var(--accent);
   text-decoration: none;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
+footer a:hover { text-decoration: underline; }
 
-/* レスポンシブ */
+/* ---- レスポンシブ ---- */
 @media (max-width: 480px) {
-  header {
-    padding: 8px 12px 0;
-  }
-
-  header h1 {
-    font-size: 15px;
-  }
-
-  .tab-btn {
-    font-size: 13px;
-    padding: 8px 12px;
-  }
-
-  .trend-item {
-    padding: 8px 12px 6px;
-  }
-
-  .trend-name {
-    font-size: 14px;
-  }
-
-  .post-item {
-    padding: 10px 12px;
-  }
-
-  footer {
-    padding: 12px;
-  }
+  header h1 { font-size: 17px; }
+  .tab-btn { font-size: 14px; padding: 12px 14px 10px; }
+  .trend-item { padding: 10px 12px 8px; }
+  .trend-name { font-size: 14px; }
+  .post-item { padding: 10px 12px; }
+  .post-text { font-size: 14px; }
+  footer { padding: 16px 12px; }
 }

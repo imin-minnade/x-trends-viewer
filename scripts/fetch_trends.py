@@ -162,12 +162,20 @@ def load_keywords():
         return json.load(f).get("keywords", [])
 
 
+def build_query(keyword):
+    """キーワードからX API検索クエリを生成する。スペース区切りはAND検索。"""
+    # 全角スペースを半角に統一してトークン分割
+    tokens = keyword.replace("\u3000", " ").split()
+    # 複数トークンはすべてAND条件（X API はスペース区切りがデフォルトでAND）
+    query_terms = " ".join(tokens)
+    return f"{query_terms} lang:ja -is:retweet"
+
+
 def fetch_posts(keyword):
     """X API v2 Recent Search でキーワードの投稿を100件取得。失敗時は None を返す。"""
     url = "https://api.twitter.com/2/tweets/search/recent"
-    query = f"{keyword} lang:ja -is:retweet"
     params = {
-        "query": query,
+        "query": build_query(keyword),
         "max_results": 100,
         "sort_order": "relevancy",
         "tweet.fields": "created_at,public_metrics,author_id",
@@ -181,13 +189,18 @@ def fetch_posts(keyword):
 
 
 def normalize_posts(raw, keyword):
-    """Recent Search レスポンスを統一フォーマットに変換する。RT+いいね数上位10件を返す。"""
+    """Recent Search レスポンスを統一フォーマットに変換する。全件保存しRT+いいね順でソート。"""
     fetched_at = datetime.now(JST).isoformat()
 
     # author_id → ユーザー情報のマップを作成
     users = {}
     for user in raw.get("includes", {}).get("users", []):
         users[user["id"]] = user
+
+    # タブ表示名: 全角スペースを半角に統一
+    display_keyword = keyword.replace("\u3000", " ")
+    # Google検索用クエリ: スペース区切りをそのまま使う（AND検索になる）
+    google_query = requests.utils.quote(display_keyword)
 
     posts = []
     for tweet in raw.get("data", []):
@@ -201,16 +214,17 @@ def normalize_posts(raw, keyword):
             "author_username": author.get("username", ""),
             "retweet_count": metrics.get("retweet_count", 0),
             "like_count": metrics.get("like_count", 0),
-            "google_search_url": f"https://www.google.com/search?q={requests.utils.quote(keyword)}",
+            "google_search_url": f"https://www.google.com/search?q={google_query}",
         })
 
-    # RT + いいね数の合計が多い順にソートして上位10件を返す
+    # RT + いいね数の合計が多い順にソート（全件保存）
     posts.sort(key=lambda p: p["retweet_count"] + p["like_count"], reverse=True)
 
     return {
         "fetched_at": fetched_at,
-        "keyword": keyword,
-        "posts": posts[:10],
+        "keyword": display_keyword,
+        "total_fetched": len(posts),
+        "posts": posts,
     }
 
 
@@ -264,7 +278,7 @@ def main():
                 print(f"  Skipped: {kw} (fetch failed)", file=sys.stderr)
                 continue
             posts_data = normalize_posts(raw, kw)
-            print(f"  Posts: {len(posts_data['posts'])} items")
+            print(f"  Posts: {posts_data['total_fetched']} items fetched")
             save_posts_json(kw, posts_data)
 
     print("Done.")
