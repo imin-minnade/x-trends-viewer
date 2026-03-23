@@ -162,10 +162,18 @@ function renderPosts(data) {
 
 // ---- キーワード読み込み ----
 
-async function loadKeywords() {
+async function loadKeywords(date) {
+  // 日付指定があればその日のスナップショット、なければ最新
+  const url = date
+    ? `${DATA_BASE}/keywords-${date}.json`
+    : `${DATA_BASE}/keywords.json`;
   try {
-    const res = await fetch(`${DATA_BASE}/keywords.json`);
-    if (!res.ok) return [];
+    const res = await fetch(url);
+    if (!res.ok) {
+      // スナップショットがなければ最新にフォールバック
+      if (date) return loadKeywords(null);
+      return [];
+    }
     const data = await res.json();
     return data.keywords || [];
   } catch {
@@ -178,6 +186,9 @@ async function loadKeywords() {
 function initTabs(keywords) {
   const nav = document.getElementById('tab-nav');
 
+  // トレンドタブ以外を一度クリア
+  nav.querySelectorAll('.tab-btn:not([data-tab="trends"])').forEach(b => b.remove());
+
   keywords.forEach(kw => {
     const btn = document.createElement('button');
     btn.className = 'tab-btn';
@@ -185,7 +196,10 @@ function initTabs(keywords) {
     btn.textContent = kw;
     nav.appendChild(btn);
   });
+}
 
+function initTabEvents() {
+  const nav = document.getElementById('tab-nav');
   nav.addEventListener('click', e => {
     const btn = e.target.closest('.tab-btn');
     if (!btn) return;
@@ -221,11 +235,27 @@ function initDatePicker() {
   const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Tokyo' });
   picker.max = today;
 
-  picker.addEventListener('change', () => {
+  picker.addEventListener('change', async () => {
     currentDate = picker.value || null;
+    // 日付変更時にその日のキーワードでタブを再生成
+    const keywords = await loadKeywords(currentDate);
+    initTabs(keywords);
+    // アクティブタブが再生成後に存在しなければトレンドに戻す
+    const tabExists = !currentDate || document.querySelector(`.tab-btn[data-tab="${activeTab}"]`);
+    if (!tabExists) {
+      activeTab = 'trends';
+    }
+    // アクティブ状態を再適用
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === activeTab);
+    });
     if (activeTab === 'trends') {
+      document.getElementById('trends-list').hidden = false;
+      document.getElementById('posts-list').hidden = true;
       loadTrends(currentDate);
     } else {
+      document.getElementById('trends-list').hidden = true;
+      document.getElementById('posts-list').hidden = false;
       loadPosts(activeTab, currentDate);
     }
   });
@@ -234,8 +264,9 @@ function initDatePicker() {
 // ---- 初期化 ----
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const keywords = await loadKeywords();
+  const keywords = await loadKeywords(null);
   initTabs(keywords);
+  initTabEvents();
   initDatePicker();
   loadTrends(null);
 });

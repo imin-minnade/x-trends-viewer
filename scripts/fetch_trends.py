@@ -146,13 +146,18 @@ def save_json(data):
 
 
 def load_keywords():
-    """data/keywords.json からキーワードリストを読み込み、docs/data/ にもコピーする。"""
+    """data/keywords.json からキーワードリストを読み込み、docs/data/ にもコピーする。
+    また、その日付のスナップショット keywords-YYYY-MM-DD.json も保存する。"""
     keywords_file = DATA_DIR / "keywords.json"
     if not keywords_file.exists():
         return []
-    # docs/data/ にコピーしてフロントエンドからも読めるようにする
+    # docs/data/keywords.json にコピー（最新タブ表示用）
     site_keywords_file = SITE_DATA_DIR / "keywords.json"
     shutil.copy2(keywords_file, site_keywords_file)
+    # docs/data/keywords-YYYY-MM-DD.json にも保存（過去日付タブ表示用）
+    date_str = datetime.now(JST).strftime("%Y-%m-%d")
+    site_keywords_dated = SITE_DATA_DIR / f"keywords-{date_str}.json"
+    shutil.copy2(keywords_file, site_keywords_dated)
     with keywords_file.open(encoding="utf-8") as f:
         return json.load(f).get("keywords", [])
 
