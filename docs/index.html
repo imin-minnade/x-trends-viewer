@@ -12,31 +12,28 @@
 <body>
 
   <header>
-    <h1>X Trends — Japan</h1>
+    <div class="header-top">
+      <h1>X Trends — Japan</h1>
+      <input type="date" id="date-picker">
+    </div>
+    <nav id="tab-nav">
+      <button class="tab-btn active" data-tab="trends">トレンド</button>
+    </nav>
     <p id="fetched-at"></p>
-    <input type="date" id="date-picker">
   </header>
 
   <main>
     <div id="trends-list">
-      <!-- TODO: app.js がここにトレンドを描画する -->
       <p class="loading">読み込み中...</p>
     </div>
+    <div id="posts-list" hidden></div>
   </main>
 
   <footer>
     <p>Data from X API · <a href="https://developer.x.com/">developer.x.com</a></p>
-    <p>トレンドの詳細は Google 検索で確認（X へのリンクは意図的に張っていません）</p>
+    <p>詳細は Google 検索で確認（X へのリンクは意図的に張っていません）</p>
   </footer>
 
   <script src="app.js"></script>
 </body>
 </html>
-<!--
-  TODO: Claude Code で以下を実装・改善
-  - デザインの作り込み（CLAUDE.md のデザイン方針を参照）
-  - レスポンシブレイアウト
-  - ダークモード対応
-  - date-picker の連動
-  - エラー表示（JSON 読み込み失敗時）
--->

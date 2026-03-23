@@ -38,27 +38,30 @@ body {
 /* ヘッダー */
 header {
   border-bottom: 1px solid var(--border);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 10px 16px 0;
   position: sticky;
   top: 0;
   background: var(--bg);
   z-index: 10;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 header h1 {
   font-size: 17px;
   font-weight: 700;
-  flex-shrink: 0;
+  flex: 1;
 }
 
 #fetched-at {
   font-size: 12px;
   color: var(--text-secondary);
-  flex: 1;
+  padding: 4px 0 8px;
 }
 
 #date-picker {
@@ -76,6 +79,42 @@ header h1 {
 #date-picker:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+
+/* タブナビ */
+#tab-nav {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+#tab-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+  background: none;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 /* メインコンテンツ */
@@ -152,6 +191,54 @@ main {
   min-width: 0;
 }
 
+/* 投稿カード */
+.post-item {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+}
+
+.post-text {
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin-bottom: 6px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.post-author {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.post-username::before {
+  content: "@";
+}
+
+.post-metrics {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.post-metric {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.post-actions {
+  margin-top: 6px;
+}
+
 /* ローディング・エラー */
 .loading,
 .error {
@@ -197,12 +284,16 @@ footer a:hover {
 /* レスポンシブ */
 @media (max-width: 480px) {
   header {
-    padding: 10px 12px;
-    gap: 8px;
+    padding: 8px 12px 0;
   }
 
   header h1 {
     font-size: 15px;
+  }
+
+  .tab-btn {
+    font-size: 13px;
+    padding: 8px 12px;
   }
 
   .trend-item {
@@ -211,6 +302,10 @@ footer a:hover {
 
   .trend-name {
     font-size: 14px;
+  }
+
+  .post-item {
+    padding: 10px 12px;
   }
 
   footer {

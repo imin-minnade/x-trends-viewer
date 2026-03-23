@@ -145,6 +145,86 @@ def save_json(data):
     print(f"Copied to: {site_dated}")
 
 
+def load_keywords():
+    """data/keywords.json からキーワードリストを読み込み、docs/data/ にもコピーする。"""
+    keywords_file = DATA_DIR / "keywords.json"
+    if not keywords_file.exists():
+        return []
+    # docs/data/ にコピーしてフロントエンドからも読めるようにする
+    site_keywords_file = SITE_DATA_DIR / "keywords.json"
+    shutil.copy2(keywords_file, site_keywords_file)
+    with keywords_file.open(encoding="utf-8") as f:
+        return json.load(f).get("keywords", [])
+
+
+def fetch_posts(keyword):
+    """X API v2 Recent Search でキーワードの投稿を取得。失敗時は None を返す。"""
+    url = "https://api.twitter.com/2/tweets/search/recent"
+    query = f"{keyword} lang:ja -is:retweet"
+    params = {
+        "query": query,
+        "max_results": 10,
+        "tweet.fields": "created_at,public_metrics,author_id",
+        "expansions": "author_id",
+        "user.fields": "name,username",
+    }
+    res = fetch_with_retry(url, params=params)
+    if res is None:
+        return None
+    return res.json()
+
+
+def normalize_posts(raw, keyword):
+    """Recent Search レスポンスを統一フォーマットに変換する。"""
+    fetched_at = datetime.now(JST).isoformat()
+
+    # author_id → ユーザー情報のマップを作成
+    users = {}
+    for user in raw.get("includes", {}).get("users", []):
+        users[user["id"]] = user
+
+    posts = []
+    for tweet in raw.get("data", []):
+        author = users.get(tweet.get("author_id", ""), {})
+        metrics = tweet.get("public_metrics", {})
+        posts.append({
+            "id": tweet.get("id", ""),
+            "text": tweet.get("text", ""),
+            "created_at": tweet.get("created_at", ""),
+            "author_name": author.get("name", ""),
+            "author_username": author.get("username", ""),
+            "retweet_count": metrics.get("retweet_count", 0),
+            "like_count": metrics.get("like_count", 0),
+            "google_search_url": f"https://www.google.com/search?q={requests.utils.quote(keyword)}",
+        })
+
+    return {
+        "fetched_at": fetched_at,
+        "keyword": keyword,
+        "posts": posts,
+    }
+
+
+def save_posts_json(keyword, data):
+    """投稿 JSON を data/ と docs/data/ に保存する。"""
+    date_str = datetime.now(JST).strftime("%Y-%m-%d")
+
+    data_dir = DATA_DIR / "keywords" / keyword
+    docs_dir = SITE_DATA_DIR / "keywords" / keyword
+    data_dir.mkdir(parents=True, exist_ok=True)
+    docs_dir.mkdir(parents=True, exist_ok=True)
+
+    content = json.dumps(data, ensure_ascii=False, indent=2)
+    data_file = data_dir / f"{date_str}.json"
+    docs_file = docs_dir / f"{date_str}.json"
+
+    data_file.write_text(content, encoding="utf-8")
+    shutil.copy2(data_file, docs_file)
+
+    print(f"Saved: {data_file}")
+    print(f"Copied to: {docs_file}")
+
+
 def main():
     result = fetch_trends_v2()
 
@@ -163,6 +243,21 @@ def main():
     print(f"Trends: {len(data['trends'])} items")
 
     save_json(data)
+
+    # キーワード別投稿を取得
+    keywords = load_keywords()
+    if keywords:
+        print(f"Fetching posts for {len(keywords)} keyword(s)...")
+        for kw in keywords:
+            print(f"  keyword: {kw}")
+            raw = fetch_posts(kw)
+            if raw is None:
+                print(f"  Skipped: {kw} (fetch failed)", file=sys.stderr)
+                continue
+            posts_data = normalize_posts(raw, kw)
+            print(f"  Posts: {len(posts_data['posts'])} items")
+            save_posts_json(kw, posts_data)
+
     print("Done.")
 
 
