@@ -164,6 +164,7 @@ def fetch_posts(keyword):
     params = {
         "query": query,
         "max_results": 100,
+        "sort_order": "relevancy",
         "tweet.fields": "created_at,public_metrics,author_id",
         "expansions": "author_id",
         "user.fields": "name,username",
