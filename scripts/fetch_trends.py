@@ -158,12 +158,12 @@ def load_keywords():
 
 
 def fetch_posts(keyword):
-    """X API v2 Recent Search でキーワードの投稿を取得。失敗時は None を返す。"""
+    """X API v2 Recent Search でキーワードの投稿を100件取得。失敗時は None を返す。"""
     url = "https://api.twitter.com/2/tweets/search/recent"
     query = f"{keyword} lang:ja -is:retweet"
     params = {
         "query": query,
-        "max_results": 10,
+        "max_results": 100,
         "tweet.fields": "created_at,public_metrics,author_id",
         "expansions": "author_id",
         "user.fields": "name,username",
@@ -175,7 +175,7 @@ def fetch_posts(keyword):
 
 
 def normalize_posts(raw, keyword):
-    """Recent Search レスポンスを統一フォーマットに変換する。"""
+    """Recent Search レスポンスを統一フォーマットに変換する。RT+いいね数上位10件を返す。"""
     fetched_at = datetime.now(JST).isoformat()
 
     # author_id → ユーザー情報のマップを作成
@@ -198,10 +198,13 @@ def normalize_posts(raw, keyword):
             "google_search_url": f"https://www.google.com/search?q={requests.utils.quote(keyword)}",
         })
 
+    # RT + いいね数の合計が多い順にソートして上位10件を返す
+    posts.sort(key=lambda p: p["retweet_count"] + p["like_count"], reverse=True)
+
     return {
         "fetched_at": fetched_at,
         "keyword": keyword,
-        "posts": posts,
+        "posts": posts[:10],
     }
 
 
