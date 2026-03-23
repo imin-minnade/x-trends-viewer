@@ -37,11 +37,19 @@ Actions タブ > "Fetch X Trends" > Run workflow で手動実行し、
 }
 ```
 
-**変更手順:**
+**変更手順（GitHub サイト上で編集する場合）:**
 
-1. `data/keywords.json` を編集（キーワードは最大3つ）
-2. `git add data/keywords.json && git commit -m "update keywords" && git push`
-3. Actions > "Fetch X Trends" > Run workflow で手動実行（または翌朝 07:00 の自動実行を待つ）
+1. GitHub リポジトリの `data/keywords.json` を開く
+2. 右上の鉛筆アイコン（Edit）をクリックして編集
+3. Commit changes で保存
+4. Actions > "Fetch X Trends" > Run workflow で手動実行（または翌朝 07:00 の自動実行を待つ）
+
+**変更手順（ローカルで編集する場合）:**
+
+1. `git pull` で最新を取得
+2. `data/keywords.json` を編集（キーワードは最大3つ）
+3. `git add data/keywords.json && git commit -m "update keywords" && git push`
+4. Actions > "Fetch X Trends" > Run workflow で手動実行（または翌朝 07:00 の自動実行を待つ）
 
 > **注意**: キーワードを変更した日以前の過去ページでは、その日時点のキーワードがタブに表示されます。
 
