@@ -147,8 +147,8 @@ function renderPosts(data) {
         <span class="post-username">${escapeHtml(post.author_username)}</span>
         <span class="post-date">${formatDateTime(post.created_at)}</span>
         <div class="post-metrics">
-          <span class="post-metric">🔁 ${formatCount(post.retweet_count)}</span>
-          <span class="post-metric">❤️ ${formatCount(post.like_count)}</span>
+          ${post.retweet_count > 0 ? `<span class="post-metric">🔁 ${formatCount(post.retweet_count)}</span>` : ''}
+          ${post.like_count > 0 ? `<span class="post-metric">❤️ ${formatCount(post.like_count)}</span>` : ''}
         </div>
       </div>
       <div class="post-actions">
