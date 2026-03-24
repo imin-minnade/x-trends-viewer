@@ -14,7 +14,21 @@
   <header>
     <div class="header-top">
       <h1>X Trends — Japan</h1>
-      <input type="date" id="date-picker">
+      <div class="header-controls">
+        <input type="date" id="date-picker">
+        <div class="settings-wrap">
+          <button class="settings-btn" id="btn-settings" aria-expanded="false" aria-label="設定">⚙️</button>
+          <div class="settings-panel" id="settings-panel" hidden>
+            <label class="settings-row">
+              <span class="settings-label">
+                X への直リンクを表示する
+                <small>個別ポストへのリンクです。タイムラインは開きません。</small>
+              </span>
+              <input type="checkbox" id="toggle-x-links">
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="date-nav">
       <button class="date-nav-btn" id="btn-prev">← 前日</button>
@@ -22,7 +36,7 @@
       <button class="date-nav-btn" id="btn-next" disabled>翌日 →</button>
     </div>
     <nav id="tab-nav">
-      <button class="tab-btn" data-tab="trends">トレンド</button>
+      <button class="tab-btn" data-tab="trends" data-tab-type="trends">トレンド</button>
     </nav>
     <p id="fetched-at"></p>
   </header>
@@ -34,7 +48,6 @@
 
   <footer>
     <p>Data from X API · <a href="https://developer.x.com/">developer.x.com</a></p>
-    <p>詳細は Google 検索で確認（X へのリンクは意図的に張っていません）</p>
   </footer>
 
   <script src="app.js"></script>

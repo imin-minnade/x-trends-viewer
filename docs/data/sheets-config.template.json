@@ -1,0 +1,13 @@
+{
+  "sheet_id":       "https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?usp=sharing",
+  "latest":         "https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?gid=XXXXXXXXX#gid=XXXXXXXXX",
+  "week":           "https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?gid=XXXXXXXXX#gid=XXXXXXXXX",
+  "persons_latest": "https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?gid=XXXXXXXXX#gid=XXXXXXXXX",
+  "years": {
+    "2026": "https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit?gid=XXXXXXXXX#gid=XXXXXXXXX",
+    "2027": "",
+    "2028": "",
+    "2029": "",
+    "2030": ""
+  }
+}
