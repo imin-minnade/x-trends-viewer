@@ -12,7 +12,6 @@ const DATA_BASE = './data';
 let activeTab      = 'trends';
 let activeTabType  = 'trends';   // 'trends' | 'keyword' | 'person'
 let currentDate    = null;
-let displayCount   = 10;
 let prevTrendsData = null;
 let sheetsConfig   = null;
 
@@ -85,9 +84,10 @@ function showXLinks() {
 }
 
 function buildXLink(postId, username) {
-  if (!showXLinks() || !postId || !username) return '';
-  const url = `https://x.com/${escapeHtml(username)}/status/${escapeHtml(postId)}`;
-  return `<a class="x-link" href="${url}" target="_blank" rel="noopener noreferrer">X で見る ↗</a>`;
+  if (!showXLinks() || !postId) return '';
+  // username があれば /username/status/ID、なければ /i/web/status/ID
+  const path = username ? `${escapeHtml(username)}/status/${escapeHtml(postId)}` : `i/web/status/${escapeHtml(postId)}`;
+  return `<a class="x-link" href="https://x.com/${path}" target="_blank" rel="noopener noreferrer">X で見る ↗</a>`;
 }
 
 // ============================================================
@@ -375,10 +375,10 @@ function getRiseInfo(name, currentCount) {
 function renderTrends(data) {
   document.getElementById('fetched-at').textContent = formatFetchedAt(data.fetched_at);
   const list = document.getElementById('trends-list');
-  list.innerHTML = buildCountBar();
+  list.innerHTML = '';
 
   const maxCount = Math.max(...data.trends.map(t => t.tweet_count || 0));
-  data.trends.slice(0, displayCount).forEach(trend => {
+  data.trends.forEach(trend => {
     const item       = document.createElement('div');
     item.className   = 'trend-item';
     const barPercent = (maxCount > 0 && trend.tweet_count != null)
@@ -400,8 +400,6 @@ function renderTrends(data) {
       </div>`;
     list.appendChild(item);
   });
-
-  bindCountBtns(list, () => renderTrends(data));
 }
 
 // ============================================================
@@ -430,9 +428,9 @@ async function loadPosts(tab, tabType, date) {
 function renderPosts(data) {
   document.getElementById('fetched-at').textContent = formatFetchedAt(data.fetched_at);
   const list = document.getElementById('posts-list');
-  list.innerHTML = buildCountBar();
+  list.innerHTML = '';
 
-  data.posts.slice(0, displayCount).forEach(post => {
+  data.posts.forEach(post => {
     const item     = document.createElement('div');
     item.className = 'post-item';
     const rt       = formatCount(post.retweet_count);
@@ -462,29 +460,6 @@ function renderPosts(data) {
       });
     }
     list.appendChild(item);
-  });
-
-  bindCountBtns(list, () => renderPosts(data));
-}
-
-// ============================================================
-// 表示件数バー
-// ============================================================
-
-function buildCountBar() {
-  const counts = [10, 30, 50, 100];
-  const btns   = counts.map(n =>
-    `<button class="count-btn${displayCount === n ? ' active' : ''}" data-count="${n}">${n}件</button>`
-  ).join('');
-  return `<div class="display-count-bar"><span>表示:</span>${btns}</div>`;
-}
-
-function bindCountBtns(container, rerender) {
-  container.querySelector('.display-count-bar').addEventListener('click', e => {
-    const btn = e.target.closest('.count-btn');
-    if (!btn) return;
-    displayCount = parseInt(btn.dataset.count, 10);
-    rerender();
   });
 }
 

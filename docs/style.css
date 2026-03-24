@@ -256,43 +256,6 @@ main {
   margin: 0 auto;
 }
 
-/* 表示件数セレクタ */
-.display-count-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-}
-
-.display-count-bar span {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-right: 2px;
-}
-
-.count-btn {
-  font-family: var(--font-main);
-  font-size: 13px;
-  color: var(--text-secondary);
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  padding: 3px 10px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-
-.count-btn:hover {
-  background: var(--hover-bg);
-  color: var(--text);
-}
-
-.count-btn.active {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
 
 /* ---- トレンドアイテム ---- */
 .trend-item {
